@@ -1,28 +1,14 @@
 import React, {Component} from 'react';
 import './App.css';
 import Form from './Form'
-
-const emailRegex = RegExp(/^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/);
-const phoneRegex = RegExp(/^\d{3}\d{3}\d{3}$/);
-
-const formValid = ({formErrors, ...rest}) => {
-    let valid = true;
-
-    Object.values(formErrors).forEach(val => val.length > 0 && (valid = false));
-
-    Object.values(rest).forEach(val => {
-        val === null && (valid = false)
-    });
-
-    return valid;
-};
+import helper from './helper'
 
 class App extends Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            firsName: null,
+            firstName: null,
             lastName: null,
             email: null,
             phone: null,
@@ -39,7 +25,7 @@ class App extends Component {
     handleSubmit = e => {
         e.preventDefault();
 
-        if (formValid(this.state)) {
+        if (helper.formValid(this.state)) {
             console.log(`
         -----SUBMITTING-----
         first Name: ${this.state.firstName}
@@ -68,12 +54,12 @@ class App extends Component {
                 break;
 
             case 'email':
-                formErrors.email = emailRegex.test(value) ? ''
+                formErrors.email = helper.EMAIL_REGEXP.test(value) ? ''
                     : 'Need Valid Email';
                 break;
 
             case 'phone' :
-                formErrors.phone = phoneRegex.test(value)  && value.substring(0, 2) === '86'
+                formErrors.phone = helper.PHONE_REGEXP.test(value) && value.substring(0, 2) === '86'
                     ? '' : 'Input a valid Lithuanian number starting with 86';
                 break;
 
@@ -85,11 +71,13 @@ class App extends Component {
     };
 
     render() {
-
-        const {formErrors} = this.state;
+        let content = Form.form.bind(this)();
+        if (helper.formValid(this.state)){
+            content = Form.success();
+        }
         return (
             <div className="App wrapper">
-                <Form/>
+                {content}
             </div>
         );
     }
