@@ -78,7 +78,7 @@ export default {
             <div>
                 Success
             </div>
-            <button>Back</button>
+            <button onClick={this.goBack.bind(this)}>Back</button>
         </div>)
     },
     fail: function FailSubmit() {
@@ -87,7 +87,7 @@ export default {
             <div>
                 Fail
             </div>
-            <button>Back</button>
+            <button onClick={this.goBack.bind(this)}>Back</button>
         </div>)
     }
 }

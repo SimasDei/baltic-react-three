@@ -4,21 +4,26 @@ import Form from './Form'
 import helper from './helper'
 
 class App extends Component {
+    defaultState = {
+        firstName: null,
+        lastName: null,
+        email: null,
+        phone: null,
+        formErrors: {
+            firstName: '',
+            lastName: '',
+            email: '',
+            phone: ''
+        }
+    }
+
     constructor(props) {
         super(props);
+        this.state = this.defaultState
+    }
 
-        this.state = {
-            firstName: null,
-            lastName: null,
-            email: null,
-            phone: null,
-            formErrors: {
-                firstName: '',
-                lastName: '',
-                email: '',
-                phone: ''
-            }
-        }
+    goBack () {
+        this.setState(this.defaultState)
     }
 
     // Prevent Default Form Submit
@@ -73,7 +78,7 @@ class App extends Component {
     render() {
         let content = Form.form.bind(this)();
         if (helper.formValid(this.state)){
-            content = Form.success();
+            content = Form.success.bind(this)();
         }
         return (
             <div className="App wrapper">
