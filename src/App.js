@@ -85,6 +85,7 @@ class App extends Component {
         if (helper.formValid(this.state) && !this.state.isEditMode){
             content = <FormSuccess/>;
         }
+        this.state.isEditMode = false;
         return (
             <div className="App wrapper">
                 {content}

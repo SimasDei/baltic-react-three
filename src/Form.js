@@ -10,6 +10,7 @@ export default {
                     <label htmlFor="firstName">First Name</label>
                     <input
                         type="text"
+                        value={this.state.firstName}
                         className={this.state.formErrors.firstName.length > 0 ? 'error' : 'valid'}
                         placeholder="First Name"
                         name="firstName"
@@ -25,6 +26,7 @@ export default {
                     <label htmlFor="lastName">Last Name</label>
                     <input
                         type="text"
+                        value={this.state.lastName}
                         className={this.state.formErrors.lastName.length > 0 ? 'error' : 'valid'}
                         placeholder="Last Name"
                         name="lastName"
@@ -43,6 +45,7 @@ export default {
                         className={this.state.formErrors.email.length > 0 ? 'error' : 'valid'}
                         placeholder="Email"
                         name="email"
+                        value={this.state.email}
                         onChange={this.handleChange}
                         noValidate/>
 
@@ -58,6 +61,7 @@ export default {
                         className={this.state.formErrors.phone.length > 0 ? 'error' : 'valid'}
                         placeholder="Phone Number"
                         name="phone"
+                        value={this.state.phone}
                         onChange={this.handleChange}
                         noValidate/>
 
