@@ -1,8 +1,10 @@
 import React, {Component} from 'react';
 import './App.css';
-import Form from './Form'
+import formComponents from './Form'
 import helper from './helper'
 
+
+let _this = null;
 class App extends Component {
     defaultState = {
         firstName: null,
@@ -15,15 +17,18 @@ class App extends Component {
             email: '',
             phone: ''
         }
+
     }
 
     constructor(props) {
         super(props);
         this.state = this.defaultState
+        _this = this;
     }
 
     goBack () {
-        this.setState(this.defaultState)
+        //this.setState(this.defaultState)
+        this.setState({isEditMode: true})
     }
 
     // Prevent Default Form Submit
@@ -76,9 +81,9 @@ class App extends Component {
     };
 
     render() {
-        let content = Form.form.bind(this)();
-        if (helper.formValid(this.state)){
-            content = Form.success.bind(this)();
+        let content = <Form/>
+        if (helper.formValid(this.state) && !this.state.isEditMode){
+            content = <FormSuccess/>;
         }
         return (
             <div className="App wrapper">
@@ -88,4 +93,25 @@ class App extends Component {
     }
 }
 
+function Form () {
+    return (<div>
+        {formComponents.form.bind(_this)()}
+    </div>)
+}
+
+function FormSuccess () {
+    return (<div>
+        {formComponents.success.bind(_this)()}
+    </div>)
+}
+
+function FormFailure () {
+    return (<div>
+        {formComponents.fail.bind(_this)()}
+    </div>)
+}
+
+
+
 export default App;
+
