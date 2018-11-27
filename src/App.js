@@ -5,6 +5,7 @@ import helper from './helper'
 
 
 let _this = null;
+
 class App extends Component {
     defaultState = {
         firstName: null,
@@ -26,7 +27,7 @@ class App extends Component {
         _this = this;
     }
 
-    goBack () {
+    goBack() {
         //this.setState(this.defaultState)
         this.setState({isEditMode: true})
     }
@@ -34,8 +35,13 @@ class App extends Component {
     // Prevent Default Form Submit
     handleSubmit = e => {
         e.preventDefault();
-        submitFormApi().then(()=>{
-            this.setState({isEditMode: false, isSubmit: true})
+        this.setState({isPreloader: true})
+        submitFormApi().then(() => {
+            this.setState({
+                isEditMode: false,
+                isSubmit: true,
+                isPreloader: false
+            })
         })
     };
 
@@ -79,11 +85,18 @@ class App extends Component {
         console.log('componentWillReceiveProps')
     }
 
+    shouldComponentUpdate(nextProps, nextState, nextContext) {
+        console.log('shouldComponentUpdate')
+        return true
+    }
+
     render() {
         console.log('render')
         let content = <Form/>
-        if (helper.formValid(this.state) && !this.state.isEditMode && this.state.isSubmit){
+        if (helper.formValid(this.state) && !this.state.isEditMode && this.state.isSubmit) {
             content = <FormSuccess/>
+        } else if (this.state.isPreloader) {
+            content = (<div>Please wait</div>)
         }
         this.state.isEditMode = false;
         return (
@@ -95,30 +108,31 @@ class App extends Component {
 }
 
 async function submitFormApi(data) {
-    await new Promise(resolve=>{
-        setTimeout(()=>{resolve()}, 2000)
+    await new Promise(resolve => {
+        setTimeout(() => {
+            resolve()
+        }, 2000)
     })
     return console.log('testSubmit');
 }
 
-function Form () {
+function Form() {
     return (<div>
         {formComponents.form.bind(_this)()}
     </div>)
 }
 
-function FormSuccess () {
+function FormSuccess() {
     return (<div>
         {formComponents.success.bind(_this)()}
     </div>)
 }
 
-function FormFailure () {
+function FormFailure() {
     return (<div>
         {formComponents.fail.bind(_this)()}
     </div>)
 }
-
 
 
 export default App;
