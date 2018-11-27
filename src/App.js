@@ -34,7 +34,7 @@ class App extends Component {
     // Prevent Default Form Submit
     handleSubmit = e => {
         e.preventDefault();
-        this.setState({isEditMode: false})
+        this.setState({isEditMode: false, isSubmit: true})
     };
 
     handleChange = e => {
@@ -71,7 +71,7 @@ class App extends Component {
 
     render() {
         let content = <Form/>
-        if (helper.formValid(this.state) && !this.state.isEditMode){
+        if (helper.formValid(this.state) && !this.state.isEditMode && this.state.isSubmit){
             content = <FormSuccess/>;
         }
         this.state.isEditMode = false;
