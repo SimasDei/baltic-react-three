@@ -34,7 +34,9 @@ class App extends Component {
     // Prevent Default Form Submit
     handleSubmit = e => {
         e.preventDefault();
-        this.setState({isEditMode: false, isSubmit: true})
+        submitFormApi().then(()=>{
+            this.setState({isEditMode: false, isSubmit: true})
+        })
     };
 
     handleChange = e => {
@@ -69,10 +71,19 @@ class App extends Component {
         this.setState({formErrors, [name]: value}, () => console.log(this.state))
     };
 
+    componentWillMount() {
+        console.log('componentWillMount')
+    }
+
+    componentWillReceiveProps(nextProps, nextContext) {
+        console.log('componentWillReceiveProps')
+    }
+
     render() {
+        console.log('render')
         let content = <Form/>
         if (helper.formValid(this.state) && !this.state.isEditMode && this.state.isSubmit){
-            content = <FormSuccess/>;
+            content = <FormSuccess/>
         }
         this.state.isEditMode = false;
         return (
@@ -81,6 +92,13 @@ class App extends Component {
             </div>
         );
     }
+}
+
+async function submitFormApi(data) {
+    await new Promise(resolve=>{
+        setTimeout(()=>{resolve()}, 2000)
+    })
+    return console.log('testSubmit');
 }
 
 function Form () {
