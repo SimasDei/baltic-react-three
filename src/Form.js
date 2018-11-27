@@ -4,8 +4,7 @@ export default {
     form: function Form() {
         return (<div className="form-wrapper">
             <h2>Create an Account</h2>
-            <form onSubmit={this.handleSubmit} noValidate>
-
+            <form noValidate>
                 <div className="firstName">
                     <label htmlFor="firstName">First Name</label>
                     <input
@@ -71,7 +70,7 @@ export default {
                 </div>
 
                 <div className="submitForm">
-                    <button type="submit">Submit Form</button>
+                    <button onClick={this.handleSubmit}>Submit Form</button>
                 </div>
             </form>
         </div>)

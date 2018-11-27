@@ -34,18 +34,7 @@ class App extends Component {
     // Prevent Default Form Submit
     handleSubmit = e => {
         e.preventDefault();
-
-        if (helper.formValid(this.state)) {
-            console.log(`
-        -----SUBMITTING-----
-        first Name: ${this.state.firstName}
-        last Name: ${this.state.lastName}
-        email: ${this.state.email}
-        phone: ${this.state.phone}
-      `)
-        } else {
-            console.error('Form Invalid display error message')
-        }
+        this.setState({isEditMode: false})
     };
 
     handleChange = e => {
@@ -55,11 +44,11 @@ class App extends Component {
 
         switch (name) {
             case 'firstName':
-                formErrors.firstName = value.length < 3 && value.length > 0 ? 'Minimum 3 Characters Required' : '';
+                formErrors.firstName = (value.length < 3) ? 'Minimum 3 Characters Required' : '';
                 break;
 
             case 'lastName':
-                formErrors.lastName = value.length < 3 && value.length > 0 ? 'Minimum 3 Characters Required'
+                formErrors.lastName = (value.length < 3) ? 'Minimum 3 Characters Required'
                     : '';
                 break;
 
