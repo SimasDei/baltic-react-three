@@ -4,14 +4,6 @@ export default {
   about: function About() {
     return (
       <div className={'container'}>
-        <div className="tabs">
-          <div className="tab1 closed" onClick={this.goBack.bind(this)}>
-            <span>Form</span>
-          </div>
-          <div className="tab2 active">
-            <span>About</span>
-          </div>
-        </div>
 
         <div className="form-wrapper">
           <h2>This is the About Section</h2>

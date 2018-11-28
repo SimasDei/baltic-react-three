@@ -3,9 +3,8 @@ import './App.css';
 import formComponents from './Form';
 import aboutComponents from './About';
 import helper from './helper';
-import Config from "./Config";
-
-
+import Config from './Config'
+import Tabs from './Tabs'
 let _this = null;
 
 class App extends Component {
@@ -112,6 +111,7 @@ class App extends Component {
     this.state.isEditMode = false;
     return (
       <div className="App wrapper">
+        <Tabs appState={this} />
         {content}
       </div>
     );

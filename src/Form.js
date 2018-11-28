@@ -5,16 +5,6 @@ export default {
   form: function Form() {
     return (
       <div className="container">
-        <Tabs/>
-        <div className="tabs">
-          <div className={'tab1'}>
-            <span>Form</span>
-          </div>
-          <div className={'tab2'} onClick={this.handleAbout}>
-            <span>About</span>
-          </div>
-        </div>
-
         <div className="form-wrapper">
           <h2>Create an Account</h2>
           <form noValidate>
@@ -92,15 +82,6 @@ export default {
   success: function FormSuccess() {
     return (
       <div className="container">
-        <div className="tabs">
-          <div className={'tab1'} onClick={this.goBack.bind(this)}>
-            <span>Form</span>
-          </div>
-          <div className={'tab2'} onClick={this.handleAbout}>
-            <span>About</span>
-          </div>
-        </div>
-
         <div className="form-wrapper">
           <h2>User Information</h2>
           <div className="userInfo">
