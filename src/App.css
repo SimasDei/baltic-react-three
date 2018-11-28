@@ -18,10 +18,84 @@
   background-color: #fff;
 }
 
+.tabs {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  padding: 0 16px;
+  box-sizing: border-box;
+}
+
+.tab1 {
+  background-color: #fff;
+  border-radius: 10px 10px 0 0;
+  height: 50px;
+  width: 20%;
+  border: 1px solid #fff ;
+}
+
+.tab1:hover {
+  cursor: pointer;
+  background-color: #ccc;
+}
+
+.tab2:hover {
+  cursor: pointer;
+  background-color: #fff;
+}
+
+.tab2 {
+  background-color: #ccc;
+  border-radius: 10px 10px 0 0;
+  height: 50px;
+  width: 20%;
+  border: 1px solid #fff ;
+  margin-left: 25px;
+}
+
+ .active {
+  background-color: #fff;
+}
+
+ .active:hover {
+   background-color: #ccc;
+ }
+
+ .closed {
+   background-color: #ccc;
+ }
+ .closed:hover {
+   background-color: #fff;
+ }
+
+.tabs span {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.loader {
+  display: flex;
+  min-width: 1vh;
+  justify-content: center;
+  background: url("./img/loader.gif") no-repeat;
+  height: 100px;
+  background-size: 100px;
+  width: 100px;
+}
+
+
 form {
   width: 100%;
   display: flex;
   flex-wrap: wrap;
+}
+
+.userInfo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 h2 {
