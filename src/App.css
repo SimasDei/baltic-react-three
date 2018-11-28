@@ -1,0 +1,178 @@
+.wrapper {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #258ea6;
+}
+
+.form-wrapper {
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  padding: 20px 40px;
+  border-radius: 10px;
+  box-shadow: 0 10px 50px #555;
+  background-color: #fff;
+}
+
+.tabs {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  padding: 0 16px;
+  box-sizing: border-box;
+}
+
+.tab1 {
+  background-color: #fff;
+  border-radius: 10px 10px 0 0;
+  height: 50px;
+  width: 20%;
+  border: 1px solid #fff ;
+}
+
+.tab1:hover {
+  cursor: pointer;
+  background-color: #ccc;
+}
+
+.tab2:hover {
+  cursor: pointer;
+  background-color: #fff;
+}
+
+.tab2 {
+  background-color: #ccc;
+  border-radius: 10px 10px 0 0;
+  height: 50px;
+  width: 20%;
+  border: 1px solid #fff ;
+  margin-left: 25px;
+}
+
+ .active {
+  background-color: #fff;
+}
+
+ .active:hover {
+   background-color: #ccc;
+ }
+
+ .closed {
+   background-color: #ccc;
+ }
+ .closed:hover {
+   background-color: #fff;
+ }
+
+.tabs span {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+
+form {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.userInfo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+h2 {
+  text-align: center;
+  width: 100%;
+  color: #111;
+  font-weight: lighter;
+  font-family: Ubuntu, Arial, Roboto, sans-serif;
+}
+
+label {
+  font-size: 0.8em;
+  margin-bottom: 0.25rem;
+  color: #222;
+  font-weight: lighter;
+}
+
+input {
+  padding: 10px 10px;
+  border-radius: 5px;
+  outline: none;
+  border: 1px solid #cfcfcf;
+}
+
+input::placeholder {
+  font-size: 1.2em;
+  font-weight: lighter;
+  color: #999;
+}
+
+.firstName,
+.lastName,
+.email,
+.phone {
+  padding: 2px;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+}
+
+.firstName,
+.lastName {
+  width: 49%;
+}
+
+.email,
+.phone {
+  width: 100%;
+}
+
+.submitForm {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.submitForm button {
+  background-color: #519e8a;
+  color: #fff;
+  border: 2px solid #fff;
+  width: 100%;
+  margin-top: 1em;
+  padding: 8px 0px;
+  font-size: 1em;
+  font-weight: lighter;
+  letter-spacing: 1px;
+  margin-bottom: 0.25em;
+}
+
+.submitForm button:hover {
+  color: #519e8a;
+  background-color: #fff;
+  border: 2px solid #519e8a;
+  cursor:pointer;
+}
+
+.errorMessage {
+  color: red;
+  font-size: 0.8em;
+  display: flex;
+}
+
+input.error {
+  border: 1px solid red;
+}
+
+input.valid {
+  border: 1px solid green;
+}
