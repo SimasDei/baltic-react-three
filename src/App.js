@@ -104,7 +104,7 @@ class App extends Component {
     if (helper.formValid(this.state) && !this.state.isEditMode && this.state.isSubmit) {
       content = <FormSuccess/>
     } else if (this.state.isPreloader) {
-      content = (<div>Please wait</div>)
+      content = (<div className="loader">Please Wait</div>)
     } else if (this.state.aboutPage) {
       content = <About />
     }

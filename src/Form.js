@@ -6,10 +6,10 @@ export default {
 
       <div className="container">
         <div className="tabs">
-        <div className={'tab1' +' '+ this.activeTab}>
+        <div className={'tab1'}>
           <span>Form</span>
         </div>
-        <div className={'tab2'+' '+ this.activeTab} onClick={this.handleAbout}>
+        <div className={'tab2'} onClick={this.handleAbout}>
           <span>About</span>
         </div>
       </div>
