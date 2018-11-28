@@ -3,6 +3,7 @@ import './App.css';
 import formComponents from './Form';
 import aboutComponents from './About';
 import helper from './helper';
+import Config from "./Config";
 
 
 let _this = null;
@@ -100,7 +101,7 @@ class App extends Component {
 
   render() {
     console.log('render')
-    let content = <Form/>
+    let content = <Form />
     if (helper.formValid(this.state) && !this.state.isEditMode && this.state.isSubmit) {
       content = <FormSuccess/>
     } else if (this.state.isPreloader) {

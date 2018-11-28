@@ -78,7 +78,7 @@
   display: flex;
   min-width: 1vh;
   justify-content: center;
-  background-image: url("img/loader.gif");
+  background-image: url("./img/loader.gif");
   background-repeat: no-repeat;
 }
 
