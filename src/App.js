@@ -3,8 +3,9 @@ import './App.css';
 import formComponents from './Form';
 import aboutComponents from './About';
 import helper from './helper';
-import Config from './Config'
-import Tabs from './Tabs'
+import Config from './Config';
+import Tabs from './Tabs';
+
 let _this = null;
 
 class App extends Component {
@@ -13,7 +14,10 @@ class App extends Component {
     lastName: null,
     email: null,
     phone: null,
+    active: 'form',
     aboutPage: false,
+    configPage: false,
+    formPage: true,
     formErrors: {
       firstName: '',
       lastName: '',
@@ -21,7 +25,7 @@ class App extends Component {
       phone: ''
     }
 
-  }
+  };
 
   constructor(props) {
     super(props);
@@ -29,15 +33,16 @@ class App extends Component {
     _this = this;
   }
 
-  goBack() {
-    //this.setState(this.defaultState)
-    this.setState({isEditMode: true, aboutPage: false, activeTab: 'closed' })
-  }
+  goBack = e => {
+    e.preventDefault();
+    this.setState(this.defaultState)
+  };
+
 
   // Prevent Default Form Submit
   handleSubmit = e => {
     e.preventDefault();
-    this.setState({isPreloader: true})
+    this.setState({isPreloader: true});
     submitFormApi().then(() => {
       this.setState({
         isEditMode: false,
@@ -47,11 +52,32 @@ class App extends Component {
     })
   };
 
+  handleForm = e => {
+    e.preventDefault();
+    this.setState({aboutPage: false, isEditMode: true, isSubmit: false, formPage: true, active: 'form'})
+  };
+
   handleAbout = e => {
     e.preventDefault();
-    this.setState({aboutPage:true, isEditMode: true, isSubmit: false});
-   this.aboutPage ? this.setState({aboutPage: false}) : this.setState({aboutPage: true});
-  }
+    this.setState({aboutPage: true, isEditMode: true, isSubmit: false, formPage: false, active: 'about'});
+  };
+
+  handleConfig = e => {
+    e.preventDefault();
+    this.setState({
+      aboutPage: false,
+      isEditMode: true,
+      isSubmit: false,
+      configPage: true,
+      formPage: false,
+      active: 'config'
+    });
+  };
+
+  deleteHandler = e => {
+    e.preventDefault();
+    this.setState(this.defaultState);
+  };
 
   handleChange = e => {
     e.preventDefault();
@@ -85,33 +111,31 @@ class App extends Component {
     this.setState({formErrors, [name]: value})
   };
 
-  componentWillMount() {
-    console.log('componentWillMount')
-  }
-
-  componentWillReceiveProps(nextProps, nextContext) {
-    console.log('componentWillReceiveProps')
-  }
-
-  shouldComponentUpdate(nextProps, nextState, nextContext) {
-    console.log('shouldComponentUpdate')
-    return true
-  }
-
   render() {
-    console.log('render')
-    let content = <Form />
+    let content = <Form/>;
     if (helper.formValid(this.state) && !this.state.isEditMode && this.state.isSubmit) {
       content = <FormSuccess/>
     } else if (this.state.isPreloader) {
       content = (<div className="loader"></div>)
+    } else if (this.formPage) {
+      content = <Form/>
     } else if (this.state.aboutPage) {
-      content = <About />
+      content = <About/>
+    } else if (this.state.configPage && !this.state.formPage) {
+      content = <Config
+        firstName={this.state.firstName}
+        lastName={this.state.lastName}
+        email={this.state.email}
+        phone={this.state.phone}
+        delete={this.deleteHandler}
+        active={this.state.active}
+      />
     }
     this.state.isEditMode = false;
     return (
       <div className="App wrapper">
-        <Tabs appState={this} />
+        <Tabs about={this.handleAbout} back={this.goBack} config={this.handleConfig} form={this.handleForm}
+              active={this.state.active}/>
         {content}
       </div>
     );
@@ -153,4 +177,3 @@ function About() {
 
 
 export default App;
-

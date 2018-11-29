@@ -1,4 +1,4 @@
-import React from "react";
+import React, {Component} from "react";
 import Tabs from "./Tabs";
 
 export default {
@@ -82,6 +82,7 @@ export default {
   success: function FormSuccess() {
     return (
       <div className="container">
+        <Tabs/>
         <div className="form-wrapper">
           <h2>User Information</h2>
           <div className="userInfo">

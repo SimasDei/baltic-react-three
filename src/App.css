@@ -10,6 +10,7 @@
 
 .form-wrapper {
   width: 400px;
+  height: 400px;
   display: flex;
   flex-direction: column;
   padding: 20px 40px;
@@ -18,15 +19,33 @@
   background-color: #fff;
 }
 
+.config-form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.config-form .config-input {
+  display: flex;
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 5px;
+  justify-content: space-between;
+}
+
+.config-form input {
+}
+
 .tabs {
   display: flex;
   flex-direction: row;
-  justify-content: flex-start;
+  justify-content: center;
+  width: 400px;
   padding: 0 16px;
   box-sizing: border-box;
 }
 
-.tab1 {
+.tab {
   background-color: #fff;
   border-radius: 10px 10px 0 0;
   height: 50px;
@@ -34,22 +53,23 @@
   border: 1px solid #fff ;
 }
 
-.tab1:hover {
+.closed {
+  background-color: #ccc;
+  border-radius: 10px 10px 0 0;
+  height: 50px;
+  width: 20%;
+  border: 1px solid #fff ;
+}
+
+.tab:last-child{
+  margin-left: 25px;
+}
+
+.tab:hover {
   cursor: pointer;
   background-color: #ccc;
 }
-
-.tab2:hover {
-  cursor: pointer;
-  background-color: #fff;
-}
-
 .tab2 {
-  background-color: #ccc;
-  border-radius: 10px 10px 0 0;
-  height: 50px;
-  width: 20%;
-  border: 1px solid #fff ;
   margin-left: 25px;
 }
 
@@ -58,12 +78,14 @@
 }
 
  .active:hover {
-   background-color: #ccc;
+   background-color: #fff;
  }
 
- .closed {
-   background-color: #ccc;
+ .config, .about, .form {
+   background-color: salmon;
  }
+
+
  .closed:hover {
    background-color: #fff;
  }
