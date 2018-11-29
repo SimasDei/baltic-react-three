@@ -6,7 +6,7 @@ class Tabs extends Component {
     render() {
 
         return (
-                <div className="tabs">
+                <div className={(this.props.hide === 'hide' ? 'tabs hide' : 'tabs')} >
                     <div className={(this.props.active === 'form' ? 'tab tab1 active' : 'tab tab1 closed')} onClick={this.props.form}>
                         <span>Form</span>
                     </div>

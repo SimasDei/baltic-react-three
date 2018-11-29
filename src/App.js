@@ -15,6 +15,7 @@ class App extends Component {
     email: null,
     phone: null,
     active: 'form',
+    hideTabs: '',
     aboutPage: false,
     configPage: false,
     formPage: true,
@@ -42,12 +43,13 @@ class App extends Component {
   // Prevent Default Form Submit
   handleSubmit = e => {
     e.preventDefault();
-    this.setState({isPreloader: true});
+    this.setState({isPreloader: true, hideTabs: 'hide'});
     submitFormApi().then(() => {
       this.setState({
         isEditMode: false,
         isSubmit: true,
-        isPreloader: false
+        isPreloader: false,
+        hideTabs: ''
       })
     })
   };
@@ -135,7 +137,7 @@ class App extends Component {
     return (
       <div className="App wrapper">
         <Tabs about={this.handleAbout} back={this.goBack} config={this.handleConfig} form={this.handleForm}
-              active={this.state.active}/>
+              active={this.state.active} hide={this.state.hideTabs} />
         {content}
       </div>
     );
