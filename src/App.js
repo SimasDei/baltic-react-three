@@ -115,7 +115,7 @@ class App extends Component {
 
   render() {
     let content = <Form/>;
-    if (helper.formValid(this.state) && !this.state.isEditMode && this.state.isSubmit) {
+    if (helper.formValid(this.state) &&  this.state.isSubmit) {
       content = <FormSuccess/>
     } else if (this.state.isPreloader) {
       content = (<div className="loader"></div>)

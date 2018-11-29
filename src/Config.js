@@ -10,19 +10,19 @@ class Config extends Component {
           <form noValidate className="config-form">
             <div className="config-input">
               <label htmlFor="firstName">First Name: <strong>{this.props.firstName}</strong></label>
-              <input type="checkbox" name="firstName" value={this.props.firstName}/>
+              <input type="checkbox" name="firstName" />
             </div>
             <div className="config-input">
               <label htmlFor="firstName">Last Name: <strong>{this.props.lastName}</strong></label>
-              <input type="checkbox" name="firstName" value={this.props.lastName}/>
+              <input type="checkbox" name="lastName" />
             </div>
             <div className="config-input">
               <label htmlFor="firstName">Email: <strong>{this.props.email}</strong></label>
-              <input type="checkbox" name="firstName" value={this.props.email}/>
+              <input type="checkbox" name="email" />
             </div>
             <div className="config-input">
               <label htmlFor="firstName">Phone: <strong>{this.props.phone}</strong></label>
-              <input type="checkbox" name="firstName" value={this.props.phone}/>
+              <input type="checkbox" name="phone" />
             </div>
 
             <button onClick={this.props.delete}>Delete</button>

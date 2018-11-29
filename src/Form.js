@@ -82,7 +82,6 @@ export default {
   success: function FormSuccess() {
     return (
       <div className="container">
-        <Tabs/>
         <div className="form-wrapper">
           <h2>User Information</h2>
           <div className="userInfo">
